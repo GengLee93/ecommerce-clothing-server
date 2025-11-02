@@ -1,0 +1,35 @@
+# =====================
+# 基本設定
+# =====================
+server:
+  port: 8080                    # 服務跑在 8080 埠
+  servlet:
+    context-path: /api          # API 路徑前綴：http://localhost:8080/api/...
+
+# =====================
+# Spring 設定
+# =====================
+spring:
+  application:
+    name: ecommerce-clothing-server   # 專案名稱（微服務用）
+
+  # -------------------
+  # 資料庫設定 (PostgreSQL)
+  # -------------------
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shopping_db
+    username: postgres
+    password: your_password
+    driver-class-name: org.postgresql.Driver
+
+  # -------------------
+  # JPA / Hibernate 設定
+  # -------------------
+  jpa:
+    hibernate:
+      ddl-auto: update          # 自動建表：create / update / validate / none
+    show-sql: true              # 印出 SQL 語句
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
