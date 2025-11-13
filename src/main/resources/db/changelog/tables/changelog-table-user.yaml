@@ -49,12 +49,6 @@ databaseChangeLog:
                     nullable: false
 
               - column:
-                  name: profile_pic_url
-                  type: varchar(200)
-                  constraints:
-                    nullable: true
-
-              - column:
                   name: user_type
                   type: varchar(20)
                   constraints:
