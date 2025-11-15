@@ -73,6 +73,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.5.0</version> <!-- 建議使用最新版本 -->
+		</dependency>
 
 		<!-- 可選：開發熱部署 -->
 		<dependency>

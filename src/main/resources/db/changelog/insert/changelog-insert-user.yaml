@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: insert-random-user
-      author: quinn
+      author: GengL
       preConditions:
         - onFail: CONTINUE
         - onError: CONTINUE
