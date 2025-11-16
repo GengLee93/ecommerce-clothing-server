@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: hoyvn
+      changes:
+        - createTable:
+            tableName: order
+            columns:
+              - column:
+                    name: order_id
+                    type: serial
+                    constraints:
+                        primaryKey: true
+                        nullable: false
+              - column:
+                    name: order_date
+                    type: TIMESTAMP
+                    defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: total_amount
+                  type: integer
+                  constraints:
+                        nullable: false
+              - column:
+                  name: payment_method
+                  type: varchar(50)
+                  constraints:
+                        nullable: false
+              - column:
+                    name: credit_card_last_four
+                    type: varchar(5)
+                    constraints:
+                        nullable: true
+              - column:
+                    name: ship_status
+                    type: varchar(10)
+                    constraints:
+                        nullable: false
+              - column:
+                  name: pay_status
+                  type: varchar(10)
+                  constraints:
+                      nullable: false
+              - column:
+                  name: deliver_type
+                  type: varchar(50)
+                  constraints:
+                      nullable: false
+              - column:
+                    name: shipping_address
+                    type: varchar(200)
+                    constraints:
+                        nullable: true
+              - column:
+                  name: pickup_store
+                  type: varchar(100)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: fk_customer_id
+                  type: integer
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: order
+            baseColumnNames: fk_customer_id
+            constraintName: fk_order_customer
+            referencedTableName: customer
+            referencedColumnNames: customer_id
