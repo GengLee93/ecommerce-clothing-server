@@ -4,21 +4,45 @@ databaseChangeLog:
       author: GengL
       comment: "Empty changeset"
   - include:
-        file: tables/changelog-table-user.yaml
-        relativeToChangelogFile: true
+      file: tables/changelog-table-user.yaml
+      relativeToChangelogFile: true
   - include:
-        file: tables/changelog-table-customer.yaml
-        relativeToChangelogFile: true
+      file: tables/changelog-table-customer.yaml
+      relativeToChangelogFile: true
   - include:
-        file: tables/changelog-table-vendor.yaml
-        relativeToChangelogFile: true
+      file: tables/changelog-table-vendor.yaml
+      relativeToChangelogFile: true
   - include:
-        file: tables/changelog-table-admin.yaml
-        relativeToChangelogFile: true
+      file: tables/changelog-table-admin.yaml
+      relativeToChangelogFile: true
   - include:
-        file: tables/changelog-table-user_log.yaml
-        relativeToChangelogFile: true
-#----------------Insert Data Here----------------
+      file: tables/changelog-table-user_log.yaml
+      relativeToChangelogFile: true
   - include:
-        file: insert/changelog-insert-user.yaml
-        relativeToChangelogFile: true
+      file: tables/changelog-table-category.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables/changelog-table-product.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables/changelog-table-product-variant.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables/changelog-table-product-image.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables/changelog-table-order.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables/changelog-table-order_item.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables/changelog-table-refund.yaml
+      relativeToChangelogFile: true
+  #----------------Insert Data Here----------------
+  - include:
+      file: insert/changelog-insert-user.yaml
+      relativeToChangelogFile: true
+
+
+
