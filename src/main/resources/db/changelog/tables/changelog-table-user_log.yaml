@@ -18,7 +18,7 @@ databaseChangeLog:
                     constraints:
                         nullable: false
                 - column:
-                    name: actio
+                    name: action
                     type: text
                 - column:
                     name: date
