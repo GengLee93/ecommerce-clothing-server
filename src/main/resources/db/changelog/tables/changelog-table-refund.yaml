@@ -44,20 +44,9 @@ databaseChangeLog:
                     name: updated_at
                     type: TIMESTAMP
                     defaultValueComputed: CURRENT_TIMESTAMP
-                - column:
-                    name: fk_vendor_id
-                    type: integer
-                    constraints:
-                        nullable: false
         - addForeignKeyConstraint:
             baseTableName: refund_request
             baseColumnNames: fk_order_item_id
             constraintName: fk_refund_order_item_id
             referencedTableName: order_item
             referencedColumnNames: order_item_id
-        - addForeignKeyConstraint:
-            baseTableName: refund_request
-            baseColumnNames: fk_vendor_id
-            constraintName: fk_refund_vendor_id
-            referencedTableName: vendor
-            referencedColumnNames: vendor_id
