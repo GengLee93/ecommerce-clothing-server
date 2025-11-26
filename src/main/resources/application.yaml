@@ -14,9 +14,9 @@ spring:
 
 # JWT 設定
 jwt:
-  secret: your-secret-key-at-least-256-bits-long
-  expiration: 86400000  # 24小時 (毫秒)
-  refresh-expiration: 604800000  # 7天
+  secret: u8K3x9vL2qP7sB1eT4rW6yZ8mN0aC5dF7gH9jK1lM3oQ2rS5tU
+  expiration: 864000  # 24小時 (以秒為單位)
+  refresh-expiration: 6048000 # 7天
 
 # Swagger 設定
 springdoc:
