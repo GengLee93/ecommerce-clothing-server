@@ -8,7 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: user_id
-                  type: serial
+                  type: bigserial
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -17,7 +17,7 @@ databaseChangeLog:
                   name: username
                   type: varchar(50)
                   constraints:
-                    nullable: false
+                    nullable: true
 
               - column:
                   name: password
