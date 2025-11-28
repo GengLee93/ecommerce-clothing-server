@@ -15,7 +15,7 @@ public record CustomUserDetails(User user) implements UserDetails {
     @Transient
     public Collection<? extends GrantedAuthority> getAuthorities() {
         String role = user.getUserType();
-        return List.of(new SimpleGrantedAuthority("ROLE" + role));
+        return List.of(new SimpleGrantedAuthority(role));
     }
 
     @Override
@@ -23,7 +23,7 @@ public record CustomUserDetails(User user) implements UserDetails {
         return user.getPassword();
     }
 
-    // 使用者的唯一識別值，用來判斷身分，這邊使用 email 作為 username
+    // 使用者的唯一識別值，用來判斷身分，當前使用 email 作為 Identifier
     @Override
     public String getUsername() {
         return user.getEmail();
@@ -58,6 +58,6 @@ public record CustomUserDetails(User user) implements UserDetails {
         return getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .findFirst()
-                .orElse("ROLE_GUEST");
+                .orElse("GUEST");
     }
 }

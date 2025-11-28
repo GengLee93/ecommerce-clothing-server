@@ -17,11 +17,3 @@ jwt:
   secret: u8K3x9vL2qP7sB1eT4rW6yZ8mN0aC5dF7gH9jK1lM3oQ2rS5tU
   expiration: 864000  # 24小時 (以秒為單位)
   refresh-expiration: 6048000 # 7天
-
-# Swagger 設定
-springdoc:
-  api-docs:
-    path: /api-docs
-  swagger-ui:
-    path: /swagger-ui.html
-    operations-sorter: method
