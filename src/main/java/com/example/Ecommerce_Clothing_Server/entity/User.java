@@ -6,7 +6,7 @@ import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "users")
-public abstract class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public abstract class User {
     @Column(name = "username", length = 50)
     private String username;
 
-    @Column(name = "password", nullable = false, length = 50)
+    @Column(name = "password", nullable = false, length = 100)
     private String password;
 
     @Column(name = "email", nullable = false, length = 200)

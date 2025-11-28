@@ -13,11 +13,11 @@ databaseChangeLog:
             sql: |
               INSERT INTO users (username, password, email, created_at, is_active, user_type)
               VALUES
-              ('randomUser1', '123', 'random1@example.com', NOW(), TRUE, 'customer'),
-              ('randomUser2', '123', 'random2@example.com', NOW(), TRUE, 'vendor'),
-              ('randomUser3', '123', 'random3@example.com', NOW(), TRUE, 'admin'),
-              ('randomUser4', '123', 'random4@example.com', NOW(), TRUE, 'customer'),
-              ('randomUser5', '123', 'random5@example.com', NOW(), TRUE, 'vendor');
+              ('randomUser1', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random1@example.com', NOW(), TRUE, 'CUSTOMER'),
+              ('randomUser2', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random2@example.com', NOW(), TRUE, 'VENDOR'),
+              ('randomUser3', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random3@example.com', NOW(), TRUE, 'ADMIN'),
+              ('randomUser4', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random4@example.com', NOW(), TRUE, 'CUSTOMER'),
+              ('randomUser5', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random5@example.com', NOW(), TRUE, 'VENDOR');
               
               INSERT INTO admin (fk_user_id)
               VALUES

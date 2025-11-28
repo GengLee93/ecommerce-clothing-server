@@ -1,9 +1,9 @@
 package com.example.Ecommerce_Clothing_Server.enums;
 
 public enum RoleType {
-    ROLE_CUSTOMER("CUSTOMER"),
-    ROLE_ADMIN("ADMIN"),
-    ROLE_VENDOR("VENDOR");
+    CUSTOMER("CUSTOMER"),
+    ADMIN("ADMIN"),
+    VENDOR("VENDOR");
 
     final String role;
     RoleType(String role) {

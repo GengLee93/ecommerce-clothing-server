@@ -3,9 +3,11 @@ package com.example.Ecommerce_Clothing_Server.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "vendor")
 public class Vendor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "vendor_id")
     private Long vendorId;
 
     @OneToOne
