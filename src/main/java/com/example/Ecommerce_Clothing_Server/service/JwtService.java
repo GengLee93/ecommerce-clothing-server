@@ -21,15 +21,20 @@ public class JwtService {
     private String secretKey;
     @Value("${jwt.expiration}")
     private long expiration;
-//    @Value("${jwt.refresh-expiration}")
-//    private long refreshExpirationTime;
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", userDetails.getAuthorities());
-//        claims.put("refreshToken", refreshExpirationTime);
         claims.put("userId", userDetails.getUsername());
         return createToken(claims, userDetails.getUsername());
+    }
+
+    // 新增：直接使用 username 與 role 字串產生 token（refresh 流程使用）
+    public String generateToken(String username, String role) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", role);
+        claims.put("userId", username);
+        return createToken(claims, username);
     }
 
     // 產生 JWT Token，用使用者的 username 來當成 subject

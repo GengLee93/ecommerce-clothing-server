@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: refresh-tokens-create-v1
+      author: GengL
+      changes:
+        - createTable:
+            tableName: refresh_tokens
+            columns:
+              - column:
+                  name: refresh_id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: token
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: expiry_date
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fk_user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: refresh_tokens
+            baseColumnNames: fk_user_id
+            constraintName: fk_refresh_user_id_to_users
+            referencedTableName: users
+            referencedColumnNames: user_id

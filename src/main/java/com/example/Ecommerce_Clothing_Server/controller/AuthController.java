@@ -1,9 +1,11 @@
 package com.example.Ecommerce_Clothing_Server.controller;
 
 import com.example.Ecommerce_Clothing_Server.dto.request.auth.LoginRequestDTO;
+import com.example.Ecommerce_Clothing_Server.dto.request.auth.RefreshTokenRequestDTO;
 import com.example.Ecommerce_Clothing_Server.dto.request.auth.RegisterRequestDTO;
 import com.example.Ecommerce_Clothing_Server.dto.response.ApiResponseDTO;
 import com.example.Ecommerce_Clothing_Server.dto.response.JwtResponseDTO;
+import com.example.Ecommerce_Clothing_Server.entity.RefreshToken;
 import com.example.Ecommerce_Clothing_Server.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.*;
@@ -36,6 +38,20 @@ public class AuthController {
                 loginRequestDTO.password()
         );
         return ResponseEntity.ok(ApiResponseDTO.success("登入成功", jwtResponse));
+    }
+
+    @PostMapping("/refresh")
+    @Operation(summary = "使用 refresh token 換取新 access token（並 rotation refresh token）")
+    public ResponseEntity<ApiResponseDTO<JwtResponseDTO>> refresh(@RequestBody RefreshTokenRequestDTO request){
+        JwtResponseDTO jwtResponse = authService.refreshToken(request.refreshToken());
+        return ResponseEntity.ok(ApiResponseDTO.success("刷新成功", jwtResponse));
+    }
+
+    @PostMapping("/logout")
+    @Operation(summary = "設備登出")
+    public ResponseEntity<Object> logout(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO) {
+        authService.logoutSingleDevice(refreshTokenRequestDTO.refreshToken());
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/exists")
