@@ -8,16 +8,16 @@ databaseChangeLog:
             columns:
               - column:
                   name: user_id
-                  type: serial
+                  type: bigserial
                   constraints:
                     primaryKey: true
                     nullable: false
 
               - column:
-                  name: account
+                  name: username
                   type: varchar(50)
                   constraints:
-                    nullable: false
+                    nullable: true
 
               - column:
                   name: password
@@ -53,7 +53,7 @@ databaseChangeLog:
                   type: varchar(20)
                   constraints:
                     nullable: false
-                    checkConstraint: "user_type in ('admin','customer','vendor')"
+                    checkConstraint: "user_type in ('ADMIN','CUSTOMER','VENDOR')"
 
         - addDefaultValue:
             tableName: users
