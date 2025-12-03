@@ -5,17 +5,17 @@ import com.example.Ecommerce_Clothing_Server.dto.request.auth.RefreshTokenReques
 import com.example.Ecommerce_Clothing_Server.dto.request.auth.RegisterRequestDTO;
 import com.example.Ecommerce_Clothing_Server.dto.response.ApiResponseDTO;
 import com.example.Ecommerce_Clothing_Server.dto.response.JwtResponseDTO;
-import com.example.Ecommerce_Clothing_Server.entity.RefreshToken;
 import com.example.Ecommerce_Clothing_Server.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -51,18 +51,21 @@ public class AuthController {
     @Operation(summary = "設備登出")
     public ResponseEntity<Object> logout(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO) {
         authService.logoutSingleDevice(refreshTokenRequestDTO.refreshToken());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(ApiResponseDTO.success("登出成功", null));
     }
 
     @PostMapping("/exists")
     @Operation(summary = "檢查帳號是否存在")
-    public ResponseEntity<ApiResponseDTO<Object>> exists(@RequestBody RegisterRequestDTO registerRequestDTO){
-        return ResponseEntity.ok(new ApiResponseDTO<Object>(true, "用戶名可用", null));
+    public ResponseEntity<ApiResponseDTO<Map<String, Boolean>>> exists(@RequestBody RegisterRequestDTO registerRequestDTO){
+        boolean isExist = authService.checkUserExists(registerRequestDTO.getEmail());
+        Map<String, Boolean> response = Map.of("isExist", isExist);
+        return ResponseEntity.ok(ApiResponseDTO.success("檢查成功", response));
     }
 
     @PostMapping("/register")
     @Operation(summary = "用戶註冊")
     public ResponseEntity<ApiResponseDTO<Object>> register(@RequestBody RegisterRequestDTO registerRequestDTO){
-        return ResponseEntity.ok(new ApiResponseDTO<Object>(true, "註冊成功", null));
+        authService.register(registerRequestDTO);
+        return ResponseEntity.ok(ApiResponseDTO.success("註冊成功", null));
     }
 }

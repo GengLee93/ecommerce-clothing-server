@@ -28,6 +28,8 @@ public class Vendor {
 
     public Vendor() {}
 
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
     public String getStoreAddress() { return storeAddress; }
     public void setStoreAddress(String storeAddress) { this.storeAddress = storeAddress; }
     public String getStoreDescription() { return storeDescription; }

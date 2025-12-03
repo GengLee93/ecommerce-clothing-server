@@ -22,6 +22,8 @@ public class Customer {
 
     public Customer() {}
 
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
     public String getDefaultShippingAddress() { return defaultShippingAddress; }
     public void setDefaultShippingAddress(String defaultShippingAddress) { this.defaultShippingAddress = defaultShippingAddress; }
     public String getBillingAddress() { return billingAddress; }

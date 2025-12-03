@@ -50,6 +50,7 @@ public class User {
     public Boolean getIsActive() { return isActive; }
     public void setIsActive(Boolean isActive) { this.isActive = isActive; }
     public String getUserType() { return userType.getRole(); }
+    public void setUserType(RoleType userType) { this.userType = userType; }
 
     @PrePersist
     protected void onCreate() {
