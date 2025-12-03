@@ -58,7 +58,7 @@ databaseChangeLog:
                     nullable: true
               - column:
                   name: fk_customer_id
-                  type: integer
+                  type: bigint
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
