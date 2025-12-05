@@ -1,6 +1,8 @@
 package com.example.Ecommerce_Clothing_Server.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "admin")
@@ -10,12 +12,11 @@ public class Admin{
     @Column(name = "admin_id")
     private Long adminId;
 
+    @Setter
+    @Getter
     @OneToOne
     @JoinColumn(name = "fk_user_id", referencedColumnName = "user_id", unique = true)
     private User user;
 
     public Admin() {}
-
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
 }
