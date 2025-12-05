@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-random-user
+      author: GengL
+      preConditions:
+        - onFail: CONTINUE
+        - onError: CONTINUE
+        - dbms:
+            type: postgresql
+      changes:
+        - sql:
+            splitStatements: false
+            sql: |
+              INSERT INTO users (username, password, email, created_at, is_active, user_type)
+              VALUES
+              ('randomUser1', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random1@example.com', NOW(), TRUE, 'CUSTOMER'),
+              ('randomUser2', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random2@example.com', NOW(), TRUE, 'VENDOR'),
+              ('randomUser3', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random3@example.com', NOW(), TRUE, 'ADMIN'),
+              ('randomUser4', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random4@example.com', NOW(), TRUE, 'CUSTOMER'),
+              ('randomUser5', '$2a$10$TFlGl4Qjufn4VpNCU4D4jOpc1PHg0K6Ul0Jadn4aXu/xaDIAB6dK6', 'random5@example.com', NOW(), TRUE, 'VENDOR');
+              
+              INSERT INTO admin (fk_user_id)
+              VALUES
+              ((SELECT user_id FROM users WHERE username = 'randomUser3'));
+              
+              INSERT INTO vendor (fk_user_id, store_address, store_description, store_logo_url, payment_account)
+              VALUES
+              ((SELECT user_id FROM users WHERE username = 'randomUser2'), '123 Vendor St', 'Vendor Description', NULL, 'vendor_account'),
+              ((SELECT user_id FROM users WHERE username = 'randomUser5'), '456 Vendor St', 'Another Vendor', NULL, 'vendor_account2');
+              
+              INSERT INTO customer (fk_user_id, default_shipping_address, billing_address)
+              VALUES
+              ((SELECT user_id FROM users WHERE username = 'randomUser1'), '123 Customer Ave', '123 Billing Ave'),
+              ((SELECT user_id FROM users WHERE username = 'randomUser4'), '456 Customer Ave', '456 Billing Ave');

@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: users-create-v1
+      author: GengL
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+
+              - column:
+                  name: password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: email
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  defaultValueComputed: now()
+
+              - column:
+                  name: phone_number
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+
+              - column:
+                  name: is_active
+                  type: boolean
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: user_type
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+                    checkConstraint: "user_type in ('ADMIN','CUSTOMER','VENDOR')"
+
+        - addDefaultValue:
+            tableName: users
+            columnName: is_active
+            defaultValueBoolean: true

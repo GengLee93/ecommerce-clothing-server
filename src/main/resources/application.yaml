@@ -1,0 +1,21 @@
+spring:
+  datasource:
+#    url: jdbc:postgresql://db:5432/shopping_db
+    url: jdbc:postgresql://localhost:5433/shopping_db
+    username: postgres
+    password: 123
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+# JWT 設定
+jwt:
+  secret: u8K3x9vL2qP7sB1eT4rW6yZ8mN0aC5dF7gH9jK1lM3oQ2rS5tU
+#  expiration: 864000  # 24小時 (以秒為單位)
+#  refresh-expiration: 6048000 # 7天
+  expiration: 60
+  refresh-expiration: 300

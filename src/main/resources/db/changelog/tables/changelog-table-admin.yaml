@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: GengL
+      changes:
+        - createTable:
+            tableName: admin
+            columns:
+              - column:
+                  name: admin_id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: fk_user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    unique: true
+        - addForeignKeyConstraint:
+            baseTableName: admin
+            baseColumnNames: fk_user_id
+            constraintName: fk_admin_user_id_to_users
+            referencedTableName: users
+            referencedColumnNames: user_id
